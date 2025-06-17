@@ -15,6 +15,7 @@ LEARNING_RATE = 0.005
 WINDOW_SIZE = 60
 HIDDEN_SIZE = 50
 WEIGHT_DECAY = 1e-5
+DROPOUT = 0
 NUM_LAYERS = 2
 MODEL_SAVE_PATH = "backend/models/trained_lstm_model.pth"
 
@@ -32,7 +33,7 @@ X_train, X_test = X_tensor[:split], X_tensor[split:]
 y_train, y_test = y_tensor[:split], y_tensor[split:]
 
 # model, loss, optimizer
-model = LSTMModel(hidden_size=HIDDEN_SIZE, num_layers=NUM_LAYERS)
+model = LSTMModel(hidden_size=HIDDEN_SIZE, num_layers=NUM_LAYERS, dropout=DROPOUT)
 criterion = nn.MSELoss()
 optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
 
